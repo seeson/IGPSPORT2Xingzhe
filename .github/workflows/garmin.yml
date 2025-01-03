@@ -1,8 +1,8 @@
-name: IGPSport Data Sync To Xingzhe 
+name: Garmin china region data sync to global region
 
 on:
   schedule:
-    - cron: '0 16 * * *'
+    - cron: '0 22 * * *'
   watch:
     types: started
 
@@ -23,9 +23,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: run script
       env:
-        USERNAME: ${{ secrets.USERNAME }}
-        PASSWORD: ${{ secrets.PASSWORD }}
-        GARMIN_EMAIL: ${{ secrets.GARMIN_EMAIL }}
-        GARMIN_PASSWORD: ${{ secrets.GARMIN_PASSWORD }}
+        GARMIN_RUN_EMAIL: ${{ secrets.GARMIN_RUN_EMAIL }}
+        GARMIN_RUN_PASSWORD: ${{ secrets.GARMIN_RUN_PASSWORD }}
       run: |
-        python ActivitySync.py
+        python GarminSync.py
